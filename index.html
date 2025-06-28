@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 多功能在线工具平台</title>
+    <!-- 引入 Tailwind CSS 以便快速美化界面 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+        /* 为卡片添加一个微妙的悬浮效果 */
+        .tool-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px); /* 向上移动一点 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* 增加阴影 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- 页面顶部导航栏 -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <h1 class="text-2xl font-bold text-gray-800">多功能在线工具平台</h1>
+            <p class="text-sm text-gray-600">一个集成了多种实用功能的在线平台</p>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="flex-grow container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900">选择一个工具开始使用</h2>
+            <p class="mt-2 text-lg text-gray-500">点击下方的卡片以访问对应的功能页面。</p>
+        </div>
+
+        <!-- 工具卡片容器 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- 卡片 1: 学生成绩查询 -->
+            <!-- 重要: a href="..." 中的链接需要指向你的成绩查询HTML文件 -->
+            <a href="score_query.html" class="tool-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-blue-500 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 文档/报告 -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">学生成绩查询</h3>
+                            <p class="text-gray-600 text-sm mt-1">进入成绩查询系统 (需要密码)。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-3">
+                    <span class="text-blue-600 font-semibold group-hover:text-blue-800 transition-colors duration-200">
+                        立即前往 &rarr;
+                    </span>
+                </div>
+            </a>
+
+            <!-- 卡片 2: 为未来新功能预留的占位符 -->
+            <div class="tool-card block bg-white rounded-xl shadow-lg overflow-hidden cursor-not-allowed opacity-60">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-gray-400 text-white rounded-lg p-3">
+                           <!-- SVG 图标: 齿轮/设置 -->
+                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">功能待开发</h3>
+                            <p class="text-gray-600 text-sm mt-1">下一个强大的功能即将上线。</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="bg-gray-50 px-6 py-3">
+                    <span class="text-gray-500 font-semibold">
+                        敬请期待...
+                    </span>
+                </div>
+            </div>
+            
+            <!-- 你可以完整复制上面的 <a href=...>...</a> 或 <div>...</div> 块来添加更多工具 -->
+
+        </div>
+    </main>
+
+    <!-- 页面底部 -->
+    <footer class="bg-white mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 多功能在线工具平台. 版权所有.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
+
+**如何使用：**
+
+1.  **保存主页文件**：将上面的代码复制并保存为一个名为 `index.html` 的文件。这个文件将是你的网站入口。
+2.  **重命名成绩查询文件**：将我们之前制作的带密码的成绩查询页面保存为 `score_query.html`。
+3.  **放在同一目录下**：确保 `index.html` 和 `score_query.html` 这两个文件**位于同一个文件夹**中。这是为了让 `index.html` 文件中的链接 `<a href="score_query.html">` 能够正确地找到并打开成绩查询页面。
+4.  **打开主页**：用浏览器打开 `index.html` 文件。你将看到新的门户主页，点击“学生成绩查询”卡片，即可跳转到查询页面。
+
+**如何添加更多功能按钮：**
+
+将来如果你开发了新的功能页面（例如，一个名为 `new_tool.html` 的新页面），只需复制“学生成绩查询”卡片的HTML代码块，并修改其中的链接和文字即可。例如：
+
+```html
+<!-- ...其他卡片... -->
+
+<!-- 新功能的卡片 -->
+<a href="new_tool.html" class="tool-card block ..."> <!-- 修改链接 -->
+    <div class="p-6">
+        <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0 ...">
+                <!-- 换一个新的SVG图标 -->
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold ...">新功能的名称</h3> <!-- 修改名称 -->
+                <p class="text-gray-600 ...">新功能的简短描述。</p> <!-- 修改描述 -->
+            </div>
+        </div>
+    </div>
+    <!-- ... -->
+</a>
+
+<!-- ... -->
+```
+
+这样，你的平台就可以方便地进行扩
