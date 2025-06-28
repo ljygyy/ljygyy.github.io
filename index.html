@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主页 - 多功能在线工具平台</title>
+    <title>主页 - cc在线工具平台</title>
     <!-- 引入 Tailwind CSS 以便快速美化界面 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -25,7 +25,7 @@
     <!-- 页面顶部导航栏 -->
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-6 py-4">
-            <h1 class="text-2xl font-bold text-gray-800">多功能在线工具平台</h1>
+            <h1 class="text-2xl font-bold text-gray-800">dcc在线工具平台</h1>
             <p class="text-sm text-gray-600">一个集成了多种实用功能的在线平台</p>
         </nav>
     </header>
@@ -91,45 +91,9 @@
     <!-- 页面底部 -->
     <footer class="bg-white mt-12">
         <div class="container mx-auto px-6 py-4 text-center text-gray-500">
-            <p>&copy; 2025 多功能在线工具平台. 版权所有.</p>
+            <p>&copy; 2025 多功能在线工具平台. cc版权所有.</p>
         </div>
     </footer>
 
 </body>
 </html>
-```
-
-**如何使用：**
-
-1.  **保存主页文件**：将上面的代码复制并保存为一个名为 `index.html` 的文件。这个文件将是你的网站入口。
-2.  **重命名成绩查询文件**：将我们之前制作的带密码的成绩查询页面保存为 `score_query.html`。
-3.  **放在同一目录下**：确保 `index.html` 和 `score_query.html` 这两个文件**位于同一个文件夹**中。这是为了让 `index.html` 文件中的链接 `<a href="score_query.html">` 能够正确地找到并打开成绩查询页面。
-4.  **打开主页**：用浏览器打开 `index.html` 文件。你将看到新的门户主页，点击“学生成绩查询”卡片，即可跳转到查询页面。
-
-**如何添加更多功能按钮：**
-
-将来如果你开发了新的功能页面（例如，一个名为 `new_tool.html` 的新页面），只需复制“学生成绩查询”卡片的HTML代码块，并修改其中的链接和文字即可。例如：
-
-```html
-<!-- ...其他卡片... -->
-
-<!-- 新功能的卡片 -->
-<a href="new_tool.html" class="tool-card block ..."> <!-- 修改链接 -->
-    <div class="p-6">
-        <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0 ...">
-                <!-- 换一个新的SVG图标 -->
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold ...">新功能的名称</h3> <!-- 修改名称 -->
-                <p class="text-gray-600 ...">新功能的简短描述。</p> <!-- 修改描述 -->
-            </div>
-        </div>
-    </div>
-    <!-- ... -->
-</a>
-
-<!-- ... -->
-```
-
-这样，你的平台就可以方便地进行扩
