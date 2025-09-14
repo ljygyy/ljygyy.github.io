@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站导航 - 多功能在线工具平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+        /* 为导航卡片添加悬浮效果 */
+        .nav-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- 页面顶部导航栏 -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">网站导航</h1>
+                <p class="text-sm text-gray-600">汇集常用及推荐的在线资源</p>
+            </div>
+            <!-- 返回主页的按钮 -->
+            <a href="index.html" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                &larr; 返回主页
+            </a>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="flex-grow container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900">常用网站链接</h2>
+            <p class="mt-2 text-lg text-gray-500">点击卡片即可跳转到目标网站。</p>
+        </div>
+
+        <!-- 网站卡片容器 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- 卡片 1: 搜索引擎 (例如 Google) -->
+            <!-- target="_blank" 会在新标签页中打开链接 -->
+            <a href="https://www.google.com" target="_blank" class="nav-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-red-500 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 搜索 -->
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Google 搜索</h3>
+                            <p class="text-gray-600 text-sm mt-1">全球领先的搜索引擎。</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 卡片 2: 视频平台 (例如 Bilibili) -->
+            <a href="https://www.bilibili.com" target="_blank" class="nav-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-pink-500 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 播放 -->
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Bilibili</h3>
+                            <p class="text-gray-600 text-sm mt-1">国内知名的视频弹幕网站。</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 卡片 3: 学习/开发 (例如 GitHub) -->
+            <a href="https://github.com" target="_blank" class="nav-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-gray-800 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 代码 -->
+                           <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                           </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">GitHub</h3>
+                            <p class="text-gray-600 text-sm mt-1">面向开源及私有软件项目的托管平台。</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 卡片 4: 设计资源 (例如 Figma) -->
+            <a href="https://www.figma.com" target="_blank" class="nav-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-purple-500 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 设计/调色板 -->
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Figma</h3>
+                            <p class="text-gray-600 text-sm mt-1">协作式界面设计工具。</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 卡片 5:  jm天堂-->
+            <a href="https://jmcomica.org" target="_blank" class="nav-card block bg-white rounded-xl shadow-lg overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 bg-yellow-500 text-white rounded-lg p-3">
+                            <!-- SVG 图标: 设计/视频 -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />  <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" /> </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">禁漫天堂</h3>
+                            <p class="text-gray-600 text-sm mt-1">每天玩上的助眠神器。</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+             <!-- 你可以完整复制上面的 <a href=...>...</a> 块来添加更多网站 -->
+
+        </div>
+    </main>
+
+    <!-- 页面底部 -->
+    <footer class="bg-white mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500">
+            <p>&copy; 2025 多功能在线工具平台. 版权所有.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
