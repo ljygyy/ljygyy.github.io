@@ -151,7 +151,8 @@
                     throw new Error(`获取文件链接失败: ${linkData.msg || 'API返回格式不正确'}`);
                 }
                 const downUrl = linkData.downUrl;
-
+                const downUrl = "https://lz.qaiu.top/parser?url=https://www.lanzoux.com/iHDR42xrk00d";
+                
                 // 步骤 2: 使用获取到的 downUrl 下载学生数据文件
                 initialLoadingMessage.innerHTML = `<p class="text-gray-600">步骤 2/2: 链接获取成功，正在加载学生数据...</p><div class="loader mt-2"></div>`;
                 const studentDataResponse = await fetch(downUrl);
@@ -220,4 +221,5 @@
     </script>
 </body>
 </html>
+
 
