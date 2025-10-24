@@ -7,11 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
+            /* 使用 Inter 字体，提供多种中文字体作为回退 */
             font-family: "Inter", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
         }
+        /* 加载动画样式 */
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #3b82f6; /* 更改为蓝色以匹配主题 */
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -22,66 +24,92 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* 消息提示框样式 */
         .message-box {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 12px 24px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             transform: translate(-50%, -20px);
+            font-weight: 500;
         }
         .message-box.show {
             opacity: 1;
             transform: translate(-50%, 0);
         }
-        .message-box.success { background-color: #4CAF50; color: white; }
-        .message-box.error { background-color: #f44336; color: white; }
-        .message-box.info { background-color: #2196F3; color: white; }
+        .message-box.success { background-color: #22c55e; color: white; }
+        .message-box.error { background-color: #ef4444; color: white; }
+        .message-box.info { background-color: #3b82f6; color: white; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+<!-- 美化: 添加了从左上到右下的淡蓝色渐变背景 -->
+<body class="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
 
-    <div id="app-container" class="w-full max-w-lg bg-white shadow-xl rounded-lg p-6 md:p-8">
-        <header class="mb-6 text-center relative border-b pb-4">
-            <!-- Back to Home Button -->
-            <a href="index.html" class="absolute left-0 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-gray-100" title="返回主页">
+    <!-- 
+      美化: 
+      - 使用 bg-white/90 和 backdrop-blur-sm 实现毛玻璃效果
+      - rounded-2xl 使圆角更柔和
+      - shadow-2xl 提供更深的阴影
+      - border 和 border-gray-200/50 增加一个微妙的边框
+    -->
+    <div id="app-container" class="w-full max-w-lg bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl p-6 md:p-8 border border-gray-200/50">
+        <header class="mb-6 text-center relative">
+            <!-- 返回主页按钮 -->
+            <a href="index.html" class="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-gray-100" title="返回主页">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             </a>
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-700">学生成绩查询系统</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">学生成绩查询系统</h1>
         </header>
 
         <!-- 密码输入区域 -->
         <div id="passwordSection">
-            <label for="passwordInput" class="block text-sm font-medium text-gray-600 mb-1">请输入访问密码:</label>
-            <input type="password" id="passwordInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+            <label for="passwordInput" class="block text-sm font-medium text-gray-600 mb-2">请输入访问密码:</label>
+            <!-- 美化: 
+              - 添加 bg-gray-50 底色
+              - focus:bg-white 使聚焦时变白
+              - rounded-xl 增加圆角
+            -->
+            <input type="password" id="passwordInput" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-gray-50 focus:bg-white">
             <p class="text-xs text-gray-500 mt-2">如需密码请联系管理员。</p>
-            <button id="unlockButton" class="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+            <!-- 美化: 
+              - 添加渐变背景 bg-gradient-to-r
+              - 添加 transform 和 transition 实现悬停动画
+              - hover:-translate-y-0.5 悬停时轻微上浮
+              - hover:shadow-lg 增加悬停阴影
+              - rounded-xl 增加圆角
+            -->
+            <button id="unlockButton" class="mt-4 w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transform transition-all duration-150 ease-in-out hover:-translate-y-0.5">
                 解锁访问
             </button>
         </div>
 
         <!-- 数据加载提示 (初始隐藏) -->
         <div id="initialLoadingMessage" class="text-center py-4 hidden">
-            <!-- 加载提示会在这里动态更新 -->
+            <!-- JS将在此处填充内容 -->
         </div>
         
         <!-- 查询区域 (初始隐藏) -->
         <fieldset id="querySection" disabled class="mb-6 opacity-100 transition-opacity duration-300 hidden">
-            <label for="searchInput" class="block text-sm font-medium text-gray-600 mb-1">查询条件:</label>
-            <input type="text" id="searchInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="请输入准考证号或姓名">
-            <button id="queryButton" class="mt-3 w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out">
+            <label for="searchInput" class="block text-sm font-medium text-gray-600 mb-2">查询条件:</label>
+            <!-- 美化: 同密码输入框 -->
+            <input type="text" id="searchInput" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 bg-gray-50 focus:bg-white" placeholder="请输入准考证号或姓名">
+            <!-- 美化: 同解锁按钮，改为蓝色渐变 -->
+            <button id="queryButton" class="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform transition-all duration-150 ease-in-out hover:-translate-y-0.5">
                 查询成绩
             </button>
         </fieldset>
         
         <div id="queryLoadingIndicator" class="loader hidden"></div>
         <div id="messageBox" class="message-box"></div>
-        <div id="resultsContainer" class="mt-6"></div>
+        <div id="resultsContainer" class="mt-6 space-y-4">
+            <!-- 查询结果将在此处动态生成 -->
+        </div>
     </div>
 
     <footer class="mt-8 text-center text-sm text-gray-500">
@@ -90,9 +118,11 @@
 
     <script>
         let studentData = [];
-        // !重要: 将下面的URL替换为你的 *解析API* 的链接
-        const apiUrl = 'https://api.mmp.cc/api/lanzou?type=json&url=https://wwov.lanzoum.com/iHDR42xrk00d'; 
-        // !重要: 在这里设置你的访问密码
+        // --- !!! 逻辑改动 !!! ---
+        // 恢复使用 jsonDataUrl，请将此URL替换为你的直链
+        const jsonDataUrl = 'https://lz.qaiu.top/parser?url=https://www.lanzoux.com/iHDR42xrk00d';
+        
+        // 密码保持不变
         const CORRECT_PASSWORD = 'dcc';
 
         // ... (DOM元素获取和 showMessage 函数保持不变) ...
@@ -133,51 +163,44 @@
         }
         
         // --- !!! 主要修改的函数 !!! ---
+        // 恢复为单次 fetch 的直链加载逻辑
         async function loadStudentData() {
-            if (apiUrl === 'YOUR_API_URL_HERE') {
-                initialLoadingMessage.innerHTML = '<p class="text-red-500 font-semibold">错误：请在代码中配置API的正确URL。</p>';
-                showMessage('API的URL未配置。', 'error', 5000);
+            if (jsonDataUrl === 'YOUR_JSON_FILE_URL_HERE') {
+                initialLoadingMessage.innerHTML = '<p class="text-red-500 font-semibold">错误：请在代码中配置JSON文件的正确URL。</p>';
+                showMessage('JSON文件URL未配置。', 'error', 5000);
                 return;
             }
 
+            // 设置简单的加载提示
+            initialLoadingMessage.innerHTML = '<p class="text-gray-600">正在加载学生数据，请稍候...</p><div class="loader mt-2"></div>';
+
             try {
-                // 步骤 1: 请求API获取下载链接
-                initialLoadingMessage.innerHTML = '<p class="text-gray-600">步骤 1/2: 正在获取文件链接...</p><div class="loader mt-2"></div>';
-                const apiResponse = await fetch(apiUrl);
-                if (!apiResponse.ok) throw new Error(`API请求失败! 状态: ${apiResponse.status}`);
-                
-                const linkData = await apiResponse.json();
-                if (linkData.code !== 200 || !linkData.downUrl) {
-                    throw new Error(`获取文件链接失败: ${linkData.msg || 'API返回格式不正确'}`);
+                // 执行单次 fetch 请求
+                const response = await fetch(jsonDataUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP错误! 状态: ${response.status}`);
                 }
-                const downUrl = linkData.downUrl;
-                const downUrl = "https://lz.qaiu.top/parser?url=https://www.lanzoux.com/iHDR42xrk00d";
                 
-                // 步骤 2: 使用获取到的 downUrl 下载学生数据文件
-                initialLoadingMessage.innerHTML = `<p class="text-gray-600">步骤 2/2: 链接获取成功，正在加载学生数据...</p><div class="loader mt-2"></div>`;
-                const studentDataResponse = await fetch(downUrl);
-                if (!studentDataResponse.ok) throw new Error(`下载学生数据失败! 状态: ${studentDataResponse.status}`);
-                
-                const data = await studentDataResponse.json();
+                const data = await response.json();
                 
                 if (Array.isArray(data)) {
                     studentData = data;
-                    initialLoadingMessage.classList.add('hidden');
-                    querySection.classList.remove('hidden');
-                    querySection.disabled = false;
+                    initialLoadingMessage.classList.add('hidden'); // 隐藏加载
+                    querySection.classList.remove('hidden');    // 显示查询
+                    querySection.disabled = false;               // 启用查询
                     showMessage(`成功加载 ${studentData.length} 条学生数据!`, 'success');
                     searchInput.focus();
                 } else {
                     throw new Error("加载的数据格式不正确，期望得到一个学生数组。");
                 }
             } catch (error) {
-                console.error("加载学生数据过程中发生错误:", error);
-                initialLoadingMessage.innerHTML = `<p class="text-red-500 font-semibold">加载数据失败: ${error.message}</p>`;
+                console.error("加载学生数据失败:", error);
+                initialLoadingMessage.innerHTML = `<p class="text-red-500 font-semibold">加载学生数据失败: ${error.message}</p>`;
                 showMessage(`加载数据失败: ${error.message}`, 'error', 7000);
             }
         }
         
-        // --- (queryScores 和 事件绑定函数保持不变) ---
+        // --- (查询逻辑) ---
         function queryScores() {
             const query = searchInput.value.trim().toLowerCase();
             resultsContainer.innerHTML = ''; 
@@ -197,12 +220,26 @@
                 queryLoadingIndicator.classList.add('hidden');
 
                 if (foundStudents.length > 0) {
-                    let htmlContent = `<h2 class="text-xl font-semibold text-gray-700 mb-4">查询结果 (${foundStudents.length} 条):</h2>`;
+                    let htmlContent = `<h2 class="text-xl font-semibold text-gray-700 mb-3">查询结果 (${foundStudents.length} 条):</h2>`;
                     foundStudents.forEach(student => {
-                        htmlContent += `<div class="bg-gray-50 p-4 rounded-lg shadow mb-4"><h3 class="text-lg font-bold text-blue-600">${student["姓名"] || 'N/A'}</h3><p class="text-sm text-gray-600 mb-2">准考证号: ${student["准考证号"] || 'N/A'}</p><ul class="list-disc list-inside space-y-1 text-gray-700">`;
+                        // 美化: 结果卡片使用白色背景和更柔和的阴影
+                        htmlContent += `
+                            <div class="bg-white p-5 rounded-xl shadow-md border border-gray-100">
+                                <h3 class="text-xl font-bold text-blue-700">${student["姓名"] || 'N/A'}</h3>
+                                <p class="text-sm text-gray-500 mb-3">准考证号: ${student["准考证号"] || 'N/A'}</p>
+                                <ul class="list-disc list-inside space-y-1.5 text-gray-700">`;
                         if (student.scores && typeof student.scores === 'object') {
-                            for (const subject in student.scores) { htmlContent += `<li><strong>${subject}:</strong> ${student.scores[subject]}</li>`; }
-                        } else { htmlContent += `<li>成绩数据格式不正确或缺失。</li>`; }
+                            for (const subject in student.scores) {
+                                // 美化: 区分总成绩和其他科目
+                                if (subject === '总成绩') {
+                                    htmlContent += `<li><strong class="text-gray-800">${subject}:</strong> <span class="font-bold text-lg text-blue-600">${student.scores[subject]}</span></li>`;
+                                } else {
+                                    htmlContent += `<li><strong class="text-gray-800">${subject}:</strong> ${student.scores[subject]}</li>`;
+                                }
+                            }
+                        } else {
+                            htmlContent += `<li>成绩数据格式不正确或缺失。</li>`;
+                        }
                         htmlContent += `</ul></div>`;
                     });
                     resultsContainer.innerHTML = htmlContent;
@@ -214,6 +251,7 @@
             }, 300); 
         }
 
+        // --- (事件绑定，保持不变) ---
         unlockButton.addEventListener('click', handleUnlockAttempt);
         passwordInput.addEventListener('keypress', function(event) { if (event.key === 'Enter') handleUnlockAttempt(); });
         queryButton.addEventListener('click', queryScores);
@@ -221,5 +259,4 @@
     </script>
 </body>
 </html>
-
 
